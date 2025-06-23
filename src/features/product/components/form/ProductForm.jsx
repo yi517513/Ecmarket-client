@@ -61,12 +61,6 @@ export const ProductForm = ({
     }
   };
 
-  const watched = methods.watch();
-
-  useEffect(() => {
-    // console.log("Watched values", watched);
-  }, [watched]);
-
   return (
     <FormProvider {...methods}>
       <form

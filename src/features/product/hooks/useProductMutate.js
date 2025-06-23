@@ -16,8 +16,9 @@ export const useCreateProduct = () => {
     onMutate: () => {
       notify.loading("新增商品中。。。");
     },
-    onSuccess: (productId) => {
-      navigate(`/item/${productId}`);
+    onSuccess: (response) => {
+      const { category, productId } = response || {};
+      navigate(`/products/${category}/${productId}`);
     },
   });
 };
