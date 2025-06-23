@@ -17,8 +17,8 @@ export const LoginForm = ({ onSubmit }) => {
     resolver: zodResolver(schema),
     mode: "onChange",
     defaultValues: {
-      email: "yee0860104@gmail.com",
-      password: "test123",
+      email: "test01@gmail.com",
+      password: "test01",
     },
   });
 

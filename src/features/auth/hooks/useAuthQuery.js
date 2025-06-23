@@ -6,6 +6,7 @@ export const useCheckMe = () => {
   return useQuery({
     queryKey: ["private", "appInit"],
     queryFn: checkMeApi,
+    retry: false,
   });
 };
 
