@@ -10,7 +10,7 @@ export const useSellerFilter = (resetPagination) => {
   };
 
   const handleUpdateCategory = (category) => {
-    const validTypes = ["all", "mapleStory", "LoL", "Pokemon"];
+    const validTypes = ["all", "mapleStory", "LoL"];
     if (!validTypes.includes(category)) throw new Error("錯誤的參數類型");
 
     setCategory(category);
@@ -30,7 +30,6 @@ export const useSellerFilter = (resetPagination) => {
       { label: "全部遊戲", value: "all" },
       { label: "楓之谷", value: "mapleStory" },
       { label: "英雄聯盟", value: "LoL" },
-      { label: "寶可夢", value: "Pokemon" },
     ],
     isActive: (value) => category === value,
     onClick: (value) => handleUpdateCategory(value),

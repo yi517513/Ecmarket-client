@@ -84,7 +84,6 @@ export const ProductForm = ({
             options={[
               { value: "mapleStory", label: "楓之谷" },
               { value: "LoL", label: "英雄聯盟" },
-              { value: "Pokemon", label: "寶可夢" },
             ]}
           />
           <FormSelect
