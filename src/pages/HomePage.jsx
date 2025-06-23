@@ -8,13 +8,13 @@ export const HomePage = () => {
       category: "mapleStory",
       label: "楓之谷",
       image:
-        "https://img0801.s3.ap-southeast-2.amazonaws.com/42a1616e-9329-4a70-9895-f552f487c4d5-ChatGPT Image 2025å¹´5æ27æ¥ ä¸å05_11_57.png",
+        "https://img0801.s3.ap-southeast-2.amazonaws.com/e123e83f-dd15-4fc3-8b55-f534d74b55ab-mapplestory Image demo.png",
     },
     {
       category: "LoL",
       label: "英雄聯盟",
       image:
-        "https://img0801.s3.ap-southeast-2.amazonaws.com/b0e6cae9-4543-44c9-adc8-968b863e3bb2-ChatGPT Image 2025å¹´5æ27æ¥ ä¸å05_23_29.png",
+        "https://img0801.s3.ap-southeast-2.amazonaws.com/8a5e4502-c7fc-4afd-8a94-64bb96ec46c0-lol Image demo.png",
     },
   ];
 
