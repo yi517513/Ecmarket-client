@@ -24,7 +24,7 @@ export const requestOtpApi = async (email) => {
 };
 
 export const checkMeApi = async () => {
-  return await api.get("/api/auth/me", { meta: { skipNotify: true } });
+  return await api.get("/api/auth/me", { silent: true });
 };
 
 export const getSessionsApi = async () => {
