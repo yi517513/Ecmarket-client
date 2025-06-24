@@ -25,7 +25,7 @@ export const useMarkAsRead = ({ deps, rootRef, hasInputRef, hasScrollRef }) => {
         alreadySentIds.current.add(id);
         pendingIds.current.delete(id);
       });
-    }, 300)
+    }, 200)
   ).current;
 
   // === 蒐集出現在 viewport 的 observe 對象並執行 debouncedMarkAsRead ===

@@ -6,9 +6,6 @@ export const useUserInputDetection = ({ deps = [] } = {}) => {
   const keydownCallbackRef = useRef(null);
   const hasInputRef = useRef(false);
 
-  const [keydownState, setKeydownState] = useState(false);
-  const [inputState, setInputState] = useState(false);
-
   const [hasBind, setHasBind] = useState(false);
 
   const setInputContainer = useCallback((el) => {
@@ -27,22 +24,18 @@ export const useUserInputDetection = ({ deps = [] } = {}) => {
     const handleKeydown = () => {
       if (keydownCallbackRef.current) {
         keydownCallbackRef?.current?.();
-        setKeydownState(true);
       }
     };
 
     const handleInput = () => {
       if (!hasInputRef.current) {
         hasInputRef.current = true;
-        setInputState(true);
       }
     };
 
     const handleInputEnd = () => {
       keydownCallbackRef.current = null;
       hasInputRef.current = false;
-      setKeydownState(false);
-      setInputState(false);
     };
 
     root.addEventListener("keydown", handleKeydown);
@@ -55,10 +48,6 @@ export const useUserInputDetection = ({ deps = [] } = {}) => {
       root.removeEventListener("focusout", handleInputEnd);
     };
   }, [hasBind, ...deps]);
-
-  useEffect(() => {
-    console.log("Keydown:", keydownState, "Input:", inputState);
-  }, [keydownState, inputState]);
 
   return { setInputContainer, setKeydownCallback, hasInputRef };
 };

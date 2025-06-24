@@ -14,7 +14,6 @@ export const useMessagesLoader = () => {
     const flatMessages = [...data.pages]
       .reverse()
       .flatMap((page) => page.messages);
-    console.log(flatMessages?.length);
     setMessages(flatMessages, recipientId);
   }, [data]);
 

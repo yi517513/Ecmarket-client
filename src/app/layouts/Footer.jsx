@@ -5,7 +5,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 export const Footer = () => (
   <footer>
     <a
-      href="//https://github.com/yi517513/marketplace-client"
+      href="https://github.com/yi517513/Ecmarket-client"
       target="_blank"
       rel="noopener noreferrer"
     >
