@@ -18,7 +18,7 @@ export const ImageSelectorModal = ({ isOpen, onClose, onSelect }) => {
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      className="h-4/5 w-[60%] w-auto p-4 "
+      className="h-4/5 min-w-[60%] w-auto p-4"
     >
       <div className="w-full flex flex-col justify-between h-full gap-1">
         <ImageInput />
