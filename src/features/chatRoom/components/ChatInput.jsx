@@ -3,7 +3,7 @@ import { useEmitTyping } from "../hooks/useEmitTyping";
 import { useSendMessage } from "../hooks/useChatRoomMutate";
 import { useChatStore } from "@app/stores/useChatStore";
 
-export const ChatInput = ({ socketRef, setInputContainer }) => {
+export const ChatInput = ({ socketRef }) => {
   const recipientId = useChatStore((s) => s.recipient?.userId);
   const [input, setInput] = useState("");
 
@@ -29,7 +29,6 @@ export const ChatInput = ({ socketRef, setInputContainer }) => {
 
   return (
     <textarea
-      ref={setInputContainer}
       placeholder="按 Enter 發送訊息，按 Shift+Enter 換行"
       value={input}
       onChange={handleInput}

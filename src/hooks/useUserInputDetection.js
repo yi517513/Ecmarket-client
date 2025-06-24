@@ -3,8 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 export const useUserInputDetection = ({ deps = [] } = {}) => {
   const containerRef = useRef(null);
 
-  const keydownCallbackRef = useRef(null);
-  const hasInputRef = useRef(false);
+  const [hasInput, setHasInput] = useState(false);
 
   const [hasBind, setHasBind] = useState(false);
 
@@ -13,29 +12,20 @@ export const useUserInputDetection = ({ deps = [] } = {}) => {
     setHasBind(!!el);
   }, []);
 
-  const setKeydownCallback = useCallback((callback) => {
-    keydownCallbackRef.current = callback;
-  }, []);
-
   useEffect(() => {
     const root = containerRef?.current;
     if (!root || !hasBind) return;
 
     const handleKeydown = () => {
-      if (keydownCallbackRef.current) {
-        keydownCallbackRef?.current?.();
-      }
+      setHasInput(true);
     };
 
     const handleInput = () => {
-      if (!hasInputRef.current) {
-        hasInputRef.current = true;
-      }
+      setHasInput(true);
     };
 
     const handleInputEnd = () => {
-      keydownCallbackRef.current = null;
-      hasInputRef.current = false;
+      setHasInput(false);
     };
 
     root.addEventListener("keydown", handleKeydown);
@@ -49,5 +39,5 @@ export const useUserInputDetection = ({ deps = [] } = {}) => {
     };
   }, [hasBind, ...deps]);
 
-  return { setInputContainer, setKeydownCallback, hasInputRef };
+  return { setInputContainer, hasInput };
 };

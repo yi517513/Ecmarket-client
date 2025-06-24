@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 export const useUserScrollDetection = ({ deps = [] } = {}) => {
   const containerRef = useRef(null);
-  const hasScrollRef = useRef(false); // 用戶是否 scroll
+  const [hasScroll, setHasScroll] = useState(false); // 用戶是否 scroll
   const [hasBind, setHasBind] = useState(false);
 
   const setScrollContainer = useCallback((el) => {
@@ -18,9 +18,7 @@ export const useUserScrollDetection = ({ deps = [] } = {}) => {
 
     const handlePointerDown = () => {
       isUserTrigger = true;
-      if (!hasScrollRef.current) {
-        hasScrollRef.current = true;
-      }
+      setHasScroll(true);
     };
 
     const handleWheel = () => {
@@ -29,15 +27,13 @@ export const useUserScrollDetection = ({ deps = [] } = {}) => {
 
     const handleScroll = () => {
       if (isUserTrigger) {
-        if (!hasScrollRef.current) {
-          hasScrollRef.current = true;
-        }
+        setHasScroll(true);
       }
     };
 
     const clear = () => {
       isUserTrigger = false;
-      hasScrollRef.current = false;
+      setHasScroll(false);
     };
 
     // === 使用者主動互動事件 ===
@@ -54,5 +50,5 @@ export const useUserScrollDetection = ({ deps = [] } = {}) => {
     };
   }, [hasBind, ...deps]);
 
-  return { setScrollContainer, hasScrollRef };
+  return { setScrollContainer, hasScroll };
 };

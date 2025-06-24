@@ -8,14 +8,9 @@ import { SelfInfo } from "./SelfInfo";
 import { RecipientInfo } from "./RecipientInfo";
 
 import { useChatStore } from "@app/stores/useChatStore";
-import { useUserInputDetection } from "@hooks/useUserInputDetection";
-import { useUserScrollDetection } from "@hooks/useUserScrollDetection";
 
 export const ChatRoomPanel = ({ socketRef }) => {
   const recipientId = useChatStore((s) => s.recipient?.userId);
-
-  const { setInputContainer, hasInputRef } = useUserInputDetection();
-  const { setScrollContainer, hasScrollRef } = useUserScrollDetection();
 
   return (
     <div className="flex h-full">
@@ -27,17 +22,9 @@ export const ChatRoomPanel = ({ socketRef }) => {
       <div className="flex flex-col h-full basis-[75%]">
         <RecipientInfo />
         <div className="flex flex-col h-[90%] relative">
-          <ContentArea
-            socketRef={socketRef}
-            setScrollContainer={setScrollContainer}
-            hasInputRef={hasInputRef}
-            hasScrollRef={hasScrollRef}
-          />
+          <ContentArea socketRef={socketRef} />
           {recipientId ? (
-            <ChatInput
-              socketRef={socketRef}
-              setInputContainer={setInputContainer}
-            />
+            <ChatInput socketRef={socketRef} />
           ) : (
             <BotIcon className="text-gray-300 w-80 h-80 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
           )}

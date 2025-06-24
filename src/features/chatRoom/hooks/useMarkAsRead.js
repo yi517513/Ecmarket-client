@@ -3,7 +3,7 @@ import debounce from "lodash.debounce";
 import { useEffect, useRef } from "react";
 import { useChatStore } from "@app/stores/useChatStore";
 
-export const useMarkAsRead = ({ deps, rootRef, hasInputRef, hasScrollRef }) => {
+export const useMarkAsRead = ({ deps, rootRef }) => {
   const pendingIds = useRef(new Set());
   const alreadySentIds = useRef(new Set());
   const markAsReadLocal = useChatStore((s) => s.markAsReadLocal);
@@ -25,7 +25,7 @@ export const useMarkAsRead = ({ deps, rootRef, hasInputRef, hasScrollRef }) => {
         alreadySentIds.current.add(id);
         pendingIds.current.delete(id);
       });
-    }, 200)
+    }, 300)
   ).current;
 
   // === 蒐集出現在 viewport 的 observe 對象並執行 debouncedMarkAsRead ===
@@ -34,7 +34,7 @@ export const useMarkAsRead = ({ deps, rootRef, hasInputRef, hasScrollRef }) => {
       if (!messageId || alreadySentIds.current.has(messageId)) return;
       pendingIds.current.add(messageId);
 
-      if (hasInputRef.current || hasScrollRef.current) debouncedMarkAsRead();
+      debouncedMarkAsRead();
     },
     rootRef,
     options: { threshold: 0 },

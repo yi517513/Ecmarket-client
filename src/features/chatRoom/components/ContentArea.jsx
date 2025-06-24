@@ -3,7 +3,6 @@ import { useChatStore } from "@stores/useChatStore";
 import { useUserStore } from "@app/stores/useUserStore";
 import { useMarkAsRead } from "../hooks/useMarkAsRead";
 import { ChatMessage } from "./ContentArea/ChatMessage";
-import { UnreadHint } from "./ContentArea/UnreadHint";
 import { MessageBubble } from "./ContentArea/MessageBubble";
 import { ScrollAnchor } from "./ContentArea/ScrollAnchor";
 import { MarkAsReadAnchor } from "./ContentArea/MarkAsReadAnchor";
@@ -12,12 +11,7 @@ import { useIncomingMessages } from "../hooks/useIncomingMessages";
 import { useScrollToTarget } from "../hooks/useScrollToTarget";
 import { useTypingListener } from "../hooks/useTypingListener";
 
-export const ContentArea = ({
-  socketRef,
-  setScrollContainer,
-  hasInputRef,
-  hasScrollRef,
-}) => {
+export const ContentArea = ({ socketRef }) => {
   const containerRef = useRef(null);
   const currentUserId = useUserStore((s) => s.userId);
   const messages = useChatStore((s) => s.messages);
@@ -38,15 +32,12 @@ export const ContentArea = ({
   const { setMarkAsReadSentinelRef } = useMarkAsRead({
     deps: [currentChatUserId],
     rootRef: containerRef,
-    hasInputRef,
-    hasScrollRef,
   });
 
   return (
     <div
       ref={(el) => {
         containerRef.current = el;
-        setScrollContainer(el);
       }}
       className="flex-1 overflow-y-auto overflow-x-hidden custom-scrollbar"
     >
@@ -71,7 +62,7 @@ export const ContentArea = ({
           const isFromMe = currentUserId === from;
           const isUnread = !isFromMe && !isRead;
           const isScrollTarget = scrollTargetId === _id;
-          const isFirstUnread = firstUnreadId === _id;
+          // const isFirstUnread = firstUnreadId === _id;
 
           return (
             <ChatMessage key={_id || idx}>
@@ -81,9 +72,9 @@ export const ContentArea = ({
                 <MarkAsReadAnchor msgId={_id} ref={setMarkAsReadSentinelRef} />
               )}
 
-              {isFirstUnread && (
+              {/* {isFirstUnread && (
                 <UnreadHint hasInput={hasInputRef} hasScroll={hasScrollRef} />
-              )}
+              )} */}
 
               <MessageBubble
                 content={content}
