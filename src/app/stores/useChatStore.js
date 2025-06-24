@@ -39,12 +39,13 @@ export const useChatStore = create((set) => ({
     set({ messages, currentChatUserId: userId }),
 
   // === 更新聊天紀錄 ===
-  markAsReadLocal: (messageIds) =>
+  updateMessagesAsRead: (messageIds) =>
     set((state) => ({
       messages: state.messages?.map((msg) =>
         messageIds?.includes(msg._id) ? { ...msg, isRead: true } : msg
       ),
     })),
+
   enqueueMarkAsRead: (ids) =>
     set((state) => {
       const setForm = new Set(state.pendingMarkAsReadIds);

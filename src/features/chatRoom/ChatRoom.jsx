@@ -5,13 +5,13 @@ import clsx from "clsx";
 import { ChatRoomPanel } from "./components/ChatRoomPanel";
 import { ChatRoomToggleButton } from "./components/ChatRoomToggleButton";
 import { useSocketConnect } from "./hooks/useSocketConnect";
-import { useMarkAsReadEffect } from "./hooks/useMarkAsReadEffect";
+import { useSendMarkAsReadEffect } from "./hooks/markAsRead/useSendMarkAsReadEffect";
 
 export const ChatRoom = () => {
   const isChatRoomOpen = useChatStore((s) => s.isChatRoomOpen);
   const { socketRef, isSocketReady } = useSocketConnect();
 
-  useMarkAsReadEffect();
+  useSendMarkAsReadEffect();
 
   return (
     <div

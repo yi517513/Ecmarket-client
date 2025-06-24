@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useChatStore } from "@stores/useChatStore";
 import { useUserStore } from "@app/stores/useUserStore";
-import { useMarkAsRead } from "../hooks/useMarkAsRead";
+import { useMarkAsReadTrigger } from "../hooks/markAsRead/useMarkAsReadTrigger";
 import { ChatMessage } from "./ContentArea/ChatMessage";
 import { MessageBubble } from "./ContentArea/MessageBubble";
 import { ScrollAnchor } from "./ContentArea/ScrollAnchor";
@@ -29,7 +29,7 @@ export const ContentArea = ({ socketRef }) => {
     useScrollToTarget({ messages, currentUserId });
 
   // === onVisible 時 加入更新佇列、樂觀更新 ===
-  const { setMarkAsReadSentinelRef } = useMarkAsRead({
+  const { setMarkAsReadSentinelRef } = useMarkAsReadTrigger({
     deps: [currentChatUserId],
     rootRef: containerRef,
   });

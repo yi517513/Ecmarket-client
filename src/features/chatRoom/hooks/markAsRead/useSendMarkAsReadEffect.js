@@ -1,9 +1,10 @@
 import { useEffect, useRef } from "react";
 import { useChatStore } from "@app/stores/useChatStore";
-import { useMarkMessagesAsRead } from "./useChatRoomMutate";
+import { useMarkMessagesAsRead } from "../useChatRoomMutate";
 import debounce from "lodash.debounce";
 
-export const useMarkAsReadEffect = () => {
+// 更新接收者的已讀狀態
+export const useSendMarkAsReadEffect = () => {
   const idsRef = useRef([]);
   const pendingMarkAsReadIds = useChatStore((s) => s.pendingMarkAsReadIds);
   const dequeueMarkAsRead = useChatStore((s) => s.dequeueMarkAsRead);

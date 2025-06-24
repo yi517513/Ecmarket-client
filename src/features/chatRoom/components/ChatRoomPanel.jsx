@@ -8,9 +8,12 @@ import { SelfInfo } from "./SelfInfo";
 import { RecipientInfo } from "./RecipientInfo";
 
 import { useChatStore } from "@app/stores/useChatStore";
+import { useMarkAsReadListener } from "../hooks/markAsRead/useMarkAsReadListener";
 
 export const ChatRoomPanel = ({ socketRef }) => {
   const recipientId = useChatStore((s) => s.recipient?.userId);
+
+  useMarkAsReadListener(socketRef);
 
   return (
     <div className="flex h-full">

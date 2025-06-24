@@ -3,10 +3,10 @@ import debounce from "lodash.debounce";
 import { useEffect, useRef } from "react";
 import { useChatStore } from "@app/stores/useChatStore";
 
-export const useMarkAsRead = ({ deps, rootRef }) => {
+export const useMarkAsReadTrigger = ({ deps, rootRef }) => {
   const pendingIds = useRef(new Set());
   const alreadySentIds = useRef(new Set());
-  const markAsReadLocal = useChatStore((s) => s.markAsReadLocal);
+  const updateMessagesAsRead = useChatStore((s) => s.updateMessagesAsRead);
   const enqueueMarkAsRead = useChatStore((s) => s.enqueueMarkAsRead);
 
   // === 防抖動，外部呼叫再多次都以固定頻率執行內部流程 ===
@@ -17,7 +17,7 @@ export const useMarkAsRead = ({ deps, rootRef }) => {
       );
       if (toSend.length <= 0) return;
 
-      markAsReadLocal(toSend); // 樂觀更新
+      updateMessagesAsRead(toSend); // 樂觀更新
       enqueueMarkAsRead(toSend); // 加入更新佇列
 
       // 標記為已送出
