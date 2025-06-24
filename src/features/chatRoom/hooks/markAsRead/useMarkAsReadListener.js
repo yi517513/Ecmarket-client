@@ -26,5 +26,5 @@ export const useMarkAsReadListener = (socketRef) => {
         handleMessageRead
       );
     };
-  }, []);
+  }, [currentRecipientId]);
 };

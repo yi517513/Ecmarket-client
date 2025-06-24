@@ -10,6 +10,7 @@ import { useMessagesLoader } from "../hooks/loader/useMessagesLoader";
 import { useIncomingMessages } from "../hooks/useIncomingMessages";
 import { useScrollToTarget } from "../hooks/useScrollToTarget";
 import { useTypingListener } from "../hooks/useTypingListener";
+import { useMarkAsReadListener } from "../hooks/markAsRead/useMarkAsReadListener";
 
 export const ContentArea = ({ socketRef }) => {
   const containerRef = useRef(null);
@@ -28,11 +29,14 @@ export const ContentArea = ({ socketRef }) => {
   const { firstUnreadId, scrollTargetId, scrollRefCallback } =
     useScrollToTarget({ messages, currentUserId });
 
-  // === onVisible 時 加入更新佇列、樂觀更新 ===
+  // === onVisible 時 加入更新佇列、樂觀更新接收者的未讀狀態 ===
   const { setMarkAsReadSentinelRef } = useMarkAsReadTrigger({
     deps: [currentChatUserId],
     rootRef: containerRef,
   });
+
+  // === socket.on 更新發送者的未讀狀態  ===
+  useMarkAsReadListener(socketRef);
 
   return (
     <div
