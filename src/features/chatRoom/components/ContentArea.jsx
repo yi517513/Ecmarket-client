@@ -40,9 +40,7 @@ export const ContentArea = ({ socketRef }) => {
 
   return (
     <div
-      ref={(el) => {
-        containerRef.current = el;
-      }}
+      ref={containerRef}
       className="flex-1 overflow-y-auto overflow-x-hidden custom-scrollbar"
     >
       <div className="flex flex-col p-2 h-full">

@@ -43,7 +43,7 @@
   }
 
   .layout-footer {
-    @apply sticky bottom-0 h-10 text-center bg-gray-500 text-white flex items-center justify-center;
+    @apply sticky bottom-0 h-12 text-center bg-gray-400 flex items-center justify-center;
   }
 
   /* -------- navbar -------- */

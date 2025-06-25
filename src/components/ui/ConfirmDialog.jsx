@@ -10,9 +10,9 @@ export const ConfirmDialog = () => {
   return (
     <Modal
       isOpen={isOpen}
-      className="w-full max-w-[360px] p-6 h-auto rounded-2xl shadow-xl"
+      className="w-full max-w-[360px] h-auto rounded-2xl shadow-xl"
     >
-      <div className="w-full flex flex-col items-center justify-center gap-6">
+      <div className="w-full flex flex-col items-center justify-center gap-6 m-6">
         <p className="text-center text-base text-gray-800 whitespace-pre-wrap">
           {message}
         </p>

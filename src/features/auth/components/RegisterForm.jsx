@@ -19,9 +19,6 @@ export const RegisterForm = ({ onSubmit }) => {
   const methods = useForm({
     resolver: zodResolver(schema),
     mode: "onChange",
-    defaultValues: {
-      email: "yi517513@gmail.com",
-    },
   });
 
   const {

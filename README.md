@@ -36,13 +36,10 @@
 
 ### 測試帳號
 
-| 帳號             | 密碼    |  Uid   |
-| ---------------- | ------ |--------|
-| test01@gmail.com | test01 | 100001 | 
-| test02@gmail.com | test02 | 100002 | 
-| test03@gmail.com | test03 | 100003 | 
-| test04@gmail.com | test04 | 100004 | 
-| test05@gmail.com | test05 | 100005 | 
+| 帳號             | 密碼      | Uid    |
+| ---------------- | --------- | ------ |
+| test01@gmail.com | !@#test01 | 100001 |
+| test02@gmail.com | !@#test02 | 100002 |
 
 > 可使用這些帳號登入體驗買賣與即時通訊功能
 

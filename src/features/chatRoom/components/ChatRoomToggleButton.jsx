@@ -26,14 +26,15 @@ export const ChatRoomToggleButton = ({ socketRef, isSocketReady }) => {
     <div
       onClick={handleOpen}
       className={clsx(
-        "h-10 w-64 flex flex-row items-center bg-gray-300 rounded-xl hover:bg-gray-400 cursor-pointer",
+        "h-10 w-64 flex flex-row items-center rounded-xl border-2 shadow-lg cursor-pointer",
+        "bg-gray-500 hover:bg-gray-600 border-gray-600",
         notifyIndicator && "animate-blink font-extrabold"
       )}
     >
       <div className="p-4">
         <LoadingSpan ready={isSocketReady} />
       </div>
-      <span className="absolute left-1/2 -translate-x-1/2 text-gray-700 font-extrabold text-xl">
+      <span className="absolute left-1/2 -translate-x-1/2 text-white font-bold text-xl">
         即時通訊
       </span>
     </div>

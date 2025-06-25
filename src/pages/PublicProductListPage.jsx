@@ -5,7 +5,7 @@ import { usePublicFilter } from "@features/product/hooks/usePublicFilter";
 import { useMatch } from "react-router-dom";
 import { PaginationConfig } from "@components/pagination/configUi/PaginationConfig";
 import { useMergedProducts } from "@features/product/hooks/useMergedProducts";
-import { useUrlStateSync } from "@hooks/url/useUrlStateSync";
+import { useSearchParamsSync } from "@hooks/url/useSearchParamsSync";
 import { PublicFilterBar } from "@features/product/components/list/PublicFilterBar";
 
 export const PublicProductListPage = () => {
@@ -32,7 +32,7 @@ export const PublicProductListPage = () => {
     ...filterParams,
   });
 
-  const { syncStateToUrl } = useUrlStateSync();
+  const { syncStateToUrl } = useSearchParamsSync();
 
   useEffect(() => {
     // 分離關注。Page 只需知道將 fetch 後的必須參數交給 pagination 就好

@@ -16,7 +16,7 @@ export const ChatRoom = () => {
   return (
     <div
       className={clsx(
-        "fixed bottom-10 right-10",
+        "fixed bottom-12 right-10",
         isChatRoomOpen && "h-[492px] w-[564px] bg-white border border-gray-300"
       )}
     >

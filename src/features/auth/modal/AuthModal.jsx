@@ -22,7 +22,7 @@ export const AuthModal = ({ isOpen, onClose }) => {
     <Modal
       isOpen={isOpen}
       onClose={handleCloseAndNavigate}
-      className="w-11/12 max-w-[620px] p-6 h-3/5 z-100"
+      className="w-11/12 max-w-[620px] p-10 h-3/5 z-100"
     >
       <div className="w-full h-full flex flex-col">
         <div className="flex justify-end basis-[10%] gap-6">

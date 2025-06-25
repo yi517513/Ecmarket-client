@@ -1,18 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 
-export const useUrlStateSync = () => {
+export const useSearchParamsSync = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-
-  // 內部用來控制要同步到 URL 的 state
-  const [internalState, setInternalState] = useState({});
+  const [internalState, setInternalState] = useState({}); // 內部用來控制要同步到 URL 的 state
+  const lastSyncedRef = useRef({}); // ⬅ 上一次實際同步到 URL 的狀態
 
   // 用來同步狀態到 URL
   const syncStateToUrl = (newPartialState = {}) => {
-    setInternalState((prev) => ({
-      ...prev,
-      ...newPartialState,
-    }));
+    // 比較 newPartialState 與上次成功同步的值
+    const hasChanged = Object.entries(newPartialState).some(
+      ([key, value]) => lastSyncedRef.current[key] !== value
+    );
+
+    if (!hasChanged) return;
+    const nextState = { ...internalState, ...newPartialState };
+    setInternalState(nextState);
+    lastSyncedRef.current = { ...lastSyncedRef.current, ...newPartialState };
   };
 
   const defaultValues = {
@@ -39,7 +43,7 @@ export const useUrlStateSync = () => {
     );
 
     const newParams = new URLSearchParams(filtered);
-    setSearchParams(newParams, { replace: false });
+    setSearchParams(newParams, { replace: true });
   }, [page, mode, limit, min, max, type]);
 
   return { syncStateToUrl };
