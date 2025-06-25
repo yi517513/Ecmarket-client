@@ -3,6 +3,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormInput } from "@components/RHF/FormInput";
 import { OtpField } from "./OtpField";
+import { PasswordInput } from "@components/RHF/PasswordInput";
 
 const schema = z
   .object({
@@ -49,12 +50,12 @@ export const RegisterForm = ({ onSubmit }) => {
           tip="請輸入有效的信箱"
         />
 
-        <FormInput
+        <PasswordInput
           label="Password"
           name="password"
           error={errors["password"]?.message}
           register={register}
-          tip="至少 6 位數"
+          tip="密碼區分大小寫，至少 6 位"
           type="password"
         />
 

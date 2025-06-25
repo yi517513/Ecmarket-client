@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormInput } from "@components/RHF/FormInput";
+import { PasswordInput } from "@components/RHF/PasswordInput";
 
 const schema = z.object({
   email: z.string().email("請輸入有效的 Email"),
@@ -16,6 +17,10 @@ export const LoginForm = ({ onSubmit }) => {
   } = useForm({
     resolver: zodResolver(schema),
     mode: "onChange",
+    defaultValues: {
+      email: "test01@gmail.com",
+      password: "!@#test01",
+    },
   });
 
   return (
@@ -28,7 +33,7 @@ export const LoginForm = ({ onSubmit }) => {
         tip="請輸入您註冊時使用的 Email"
       />
 
-      <FormInput
+      <PasswordInput
         label="Password"
         name="password"
         error={errors["password"]?.message}

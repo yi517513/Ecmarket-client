@@ -10,7 +10,8 @@
       "@layouts/*": ["src/app/layouts/*"],
       "@pages/*": ["src/pages/*"],
       "@stores/*": ["src/app/stores/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@assets/*": ["public/assets/*"]
     }
   }
 }
